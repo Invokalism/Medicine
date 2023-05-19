@@ -30,7 +30,7 @@ public class BuyMedicineBookActivity extends AppCompatActivity {
             Intent intent=getIntent();
             String[] price = intent.getStringExtra("price").toString().split(java.util.regex.Pattern.quote(":"));
             String date = intent.getStringExtra("date");
-            String time = intent.getStringExtra("time");
+
 
             btnBooking.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -39,7 +39,7 @@ public class BuyMedicineBookActivity extends AppCompatActivity {
                     String username = sharedpreferences.getString("username", "").toString();
 
                     Database db = new Database (getApplicationContext(),"healthcare", null, 1);
-                    db.addOrder(username,edname.getText().toString(),edaddress.getText().toString(),edcontact.getText().toString(),edpincode.getText().toString()),date.toString(),"",Float.parseFloat(price[1].toString()),"medicine");
+                    db.addOrder(username,edname.getText().toString(),edaddress.getText().toString(),edcontact.getText().toString(),Integer.parseInt(edpincode.getText().toString()),date.toString(),"",Float.parseFloat(price[1].toString()),"medicine");
                     db.removeCart(username,"medicine");
                     Toast.makeText(getApplicationContext(),"Your booking is done successfully", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(BuyMedicineBookActivity.this,HomeActivity.class));

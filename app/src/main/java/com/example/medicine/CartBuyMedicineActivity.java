@@ -39,6 +39,7 @@ public class CartBuyMedicineActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart_buy_medicine);
+
         dateButton = findViewById(R.id.buttonBMCartDate);
         btnCheckout = findViewById(R.id.buttonBMCartCheckout);
         btnBack = findViewById(R.id.buttonBMCartBack);
@@ -122,13 +123,13 @@ public class CartBuyMedicineActivity extends AppCompatActivity {
                 dateButton.setText(i2 + "/" + i1 + "/" + i);
             }
         };
-        Calendar cal = new Calendar.getInstance();
+        Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
 
         int style = AlertDialog.THEME_HOLO_DARK;
-        datePickerDialog = new DatePickerDialog(this.style, dateSetListener, year, month, day);
+        datePickerDialog = new DatePickerDialog(this,style, dateSetListener, year, month, day);
         datePickerDialog.getDatePicker().setMinDate(cal.getTimeInMillis() + 86400000);
     }
 
